@@ -120,6 +120,66 @@ public class LineageDatabaseHelper extends SQLiteOpenHelper{
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+
+        // DNS migration XXX: shouldn't be here
+        final String currentPrivateDnsMode = Settings.Global.getString(
+                    mContext.getContentResolver(), Settings.Global.PRIVATE_DNS_MODE);
+        if (!"off".equals(currentPrivateDnsMode) && !"hostname".equals(currentPrivateDnsMode) && !"opportunistic".equals(currentPrivateDnsMode)) {
+            Log.d(TAG, "Performing migration for private dns presets");
+            if ("adguard".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "dns.adguard.com");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("appliedprivacy".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "dot1.applied-privacy.net");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("cira".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "protected.canadianshield.cira.ca");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("cleanbrowsing".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "security-filter-dns.cleanbrowsing.org");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("cloudflare".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "security.cloudflare-dns.com");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("cznic".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "odvr.nic.cz");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            }else if ("google".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "dns.google");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("mullvad".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "adblock.dns.mullvad.net");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("quadnine".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "dns.quad9.net");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("restena".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "kaitain.restena.lu");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("switch".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "dns.switch.ch");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("twnic".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "101.101.101.101");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            } else if ("uncensoreddns".equals(currentPrivateDnsMode)) {
+                ConnectivitySettingsManager.setPrivateDnsHostname(mContext, "anycast.censurfridns.dk");
+                ConnectivitySettingsManager.setPrivateDnsMode(mContext,
+                            ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+            }
+        }
     }
 
     /**
