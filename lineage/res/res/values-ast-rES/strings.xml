@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="lineageos_system_label">Sistema LineageOS</string>
+    <string name="lineageos_system_label">Sistema AXP.OS</string>
     <string name="permlab_modifyProfiles">modificación de los perfiles del sistema</string>
     <string name="profileNameWork">Llaboral</string>
     <string name="profileNameAutomobile">Automóvil</string>
@@ -34,8 +34,8 @@
     <string name="permdesc_manageRemotePrefs">Permite qu\'una aplicación xestione axustes remotos</string>
     <string name="build_date">Data de la compilación</string>
     <string name="lineage_api_level">Nivel de l\'API de LineageOS</string>
-    <string name="lineage_updates">Anovamientos de LineageOS</string>
-    <string name="lineage_version">Versión de LineageOS</string>
+    <string name="lineage_updates">Anovamientos de AXP.OS</string>
+    <string name="lineage_version">Versión de AXP.OS</string>
     <string name="unknown">Desconozse</string>
     <string name="kilobitspersecond_short">kb/s</string>
     <string name="megabitspersecond_short">Mb/s</string>
